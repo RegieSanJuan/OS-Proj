@@ -1,0 +1,307 @@
+/*MAIN ELEMENTS*/
+header {
+  margin: 15px;
+}
+h1 {
+  color: #06080a;
+  font-family: "JetBrains Mono NL ExtraBold";
+  margin-bottom: 0px;
+}
+h3 {
+  color: #06080a;
+  font-family: "JetBrains Mono NL ExtraBold";
+  margin-top: 3px;
+  margin-bottom: 20;
+}
+body {
+  background-color: #16161e;
+}
+table {
+  border-collapse: collapse;
+}
+th {
+  width: 70px;
+  border: 4px solid;
+}
+/*CLASS*/
+.form1 {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
+.error {
+  animation-name: box_slideUp;
+  animation-duration: 1.5s;
+}
+.form2 {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.buttons {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.process_buttons {
+  height: 50px;
+  width: 50px;
+  color: #16161e;
+  font-size: 32px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+}
+.labels_process {
+  color: #a9b1d6;
+  font-size: 24px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+.text {
+  width: 100px;
+  font-size: 24px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  background-color: #e9ebf1;
+  border-radius: 7px;
+  border: 1px solid #2c324a;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.box {
+  animation-name: slideUp;
+  animation-duration: 1.5s;
+}
+.group {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+.time_title {
+  height: 30px;
+  color: #16161e;
+  font-size: 36px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin-top: 20px;
+}
+.time_content {
+  /*height: 50px;*/
+  color: #16161e;
+  font-size: 28px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin: 20px;
+}
+.time_subcontent {
+  color: #16161e;
+  font-size: 24px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+/*ID*/
+#box1 {
+  width: 475px;
+  height: 80px;
+  background-color: #7da6ff;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 5px;
+}
+#wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: auto;
+  height: 250px;
+}
+#box2 {
+  width: 300px;
+  height: 200px;
+  background-color: #2c324a;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#error_box {
+  position: absolute;
+  width: 325px;
+  height: 100px;
+  background-color: #2c324a;
+  border-radius: 20px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  text-align: center;
+  color: rgb(243, 242, 248);
+  box-shadow: 3px 3px 5px;
+  opacity: 1;
+  margin-top: 50px;
+  margin-left: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
+#box3 {
+  width: 1000px;
+  height: 425px;
+  background-color: #2c324a;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#box4 {
+  width: 275px;
+  height: 100px;
+  background-color: #2c324a;
+  border-radius: 20px;
+  margin: 0px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#box5 {
+  width: 1100px;
+  height: 705px;
+  background-color: #2c324a;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: box_slideUp;
+  animation-duration: 1.5s;
+}
+#box6 {
+  width: 1040px;
+  height: 250px;
+  background-color: #ff9e64;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 5px;
+  animation-name: box_slideUp;
+  animation-duration: 1.5s;
+}
+#box7 {
+  width: 500px;
+  height: 350px;
+  background-color: #73daca;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 3px 3px 5px;
+  animation-name: box_slideUp;
+  animation-duration: 1.5s;
+}
+#button1 {
+  width: 70px;
+  height: 30px;
+  font-size: 16px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  background-color: #e9ebf1;
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+#decrease {
+  background-color: #f7768e;
+}
+#increase {
+  background-color: #9ece6a;
+}
+#process {
+  color: #a9b1d6;
+  font-size: 32px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  margin-bottom: 15px;
+}
+#add_process {
+  width: 90px;
+  height: 50px;
+  font-size: 16px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  background-color: #e9ebf1;
+  border-radius: 7px;
+}
+#compute {
+  width: 90px;
+  height: 50px;
+  font-size: 16px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  background-color: #e9ebf1;
+  border-radius: 7px;
+}
+#margin {
+  width: 30px;
+}
+#click2 {
+  width: 90px;
+  height: 50px;
+}
+#gantt {
+  height: 50px;
+  color: #16161e;
+  font-size: 42px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin-top: 20px;
+}
+#table {
+  color: #16161e;
+  font-size: 36px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+}
+#timestamp {
+  color: #16161e;
+  font-size: 18px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin-top: 1px;
+}
+/*ANIMATIONS*/
+@keyframes slideUp {
+  from {
+    transform: translateY(50%);
+  }
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes form_slideUp {
+  from {
+    transform: translateY(20%);
+  }
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes box_slideUp {
+  from {
+    transform: translateY(10%);
+  }
+  0% {
+    opacity: 0;
+  }
+}

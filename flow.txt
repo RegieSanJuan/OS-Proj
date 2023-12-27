@@ -1,0 +1,14 @@
+1. Input the number of process needed minimum of 4 but not more than 8
+2. Input the arrival time, burst time and priority of the processes
+3. Find the lowest value in the arrival time of the processes for it to be executed
+4. Sort the remaining processes in ascending order by its priority number and execute it
+5. Print the Gantt chart of the algorithm
+6. Print the Total and average value of Turnaround Time of the algorithm
+7. Print the Total and average value of Waiting Time of the algorithm
+
+FEATURES NEED TO ADD
+1. Fixing the on click animation for the error box in the main.html
+2. Inputing data needed for the process.html
+3. Proper implementation of .js file into the process.html and compute.html
+4. Having a responsive output in the compute.html
+
