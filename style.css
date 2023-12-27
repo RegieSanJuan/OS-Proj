@@ -17,9 +17,9 @@ body {
   background-color: #16161e;
 }
 table {
-  border-collapse: collapse;
+  border-collapse: collapse; 
 }
-th {
+td {
   width: 70px;
   border: 4px solid;
 }
@@ -113,6 +113,10 @@ th {
   margin-left: 50px;
   margin-right: 20px;
 }
+.cell {
+  background-color:#ff9e64;
+  border: 0px;
+}
 
 /*ID*/
 #box1 {
@@ -161,9 +165,9 @@ th {
   flex-direction: column;
 }
 #box3 {
-  width: 1000px;
-  height: 425px;
-  background-color: #2c324a;
+  width: 700px;
+  height: 325px;
+  background-color: #ff9e64;
   border-radius: 20px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
@@ -234,6 +238,12 @@ th {
   font-style: normal;
   margin-bottom: 15px;
 }
+#table {
+  color: #000000;
+  font-size: 24px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+}
 #add_process {
   width: 90px;
   height: 50px;
@@ -267,7 +277,7 @@ th {
   font-style: normal;
   margin-top: 20px;
 }
-#table {
+#gantt_chart {
   color: #16161e;
   font-size: 36px;
   font-family: "JetBrains Mono NL ExtraBold";
