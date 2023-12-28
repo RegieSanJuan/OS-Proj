@@ -9,26 +9,34 @@ let total_process = 4,
 //ONCLICK ANIMATIONS
 
 //MAIN.HTML
-
-document.getElementById("increase").onclick = function () {
-  if (total_process < 8) {
-    total_process += 1;
+function decrease_process()
+{
+  if(total_process > 4){
+  total_process-=1;
+  document.getElementById("process").innerHTML = total_process;
+  }
+}
+function increase_process()
+{
+  if(total_process < 8){
+    total_process+=1;
     document.getElementById("process").innerHTML = total_process;
   }
-};
-document.getElementById("decrease").onclick = function () {
-  if (total_process > 4) {
-    total_process -= 1;
-    document.getElementById("process").innerHTML = total_process;
-  }
-};
-
-document.getElementById("button1").onclick = function () {
-  /*total_process = document.getElementById("process").value;*/
+}
+function table()
+{ 
   total_process = Number(total_process);
-  window.open("process.html", "_self");
-  console.log("proceed ", total_process);
-};
+  window.open("process.html","_self");
+  console.log("proceed ", total_process); 
+}
+
 //PROCESS.HTML
 count = total_process;
-document.getElementById("add_process").onclick = function () {};
+function back()
+{
+  window.open("main.html","_self");
+}
+function proceed()
+{
+  window.open("compute.html", "_self");
+}
