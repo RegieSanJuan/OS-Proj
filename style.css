@@ -17,7 +17,7 @@ body {
   background-color: #16161e;
 }
 table {
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 td {
   width: 70px;
@@ -47,7 +47,7 @@ td {
   align-items: center;
   justify-content: center;
 }
-.process_buttons {
+.process_buttons_decrease {
   height: 50px;
   width: 50px;
   color: #16161e;
@@ -58,7 +58,34 @@ td {
   margin-right: 20px;
   margin-bottom: 15px;
   border-radius: 20px;
+  box-shadow: 0 7px #0a0808;
+  cursor: pointer;
 }
+.process_buttons_decrease:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
+
+.process_buttons_increase {
+  height: 50px;
+  width: 50px;
+  color: #16161e;
+  font-size: 32px;
+  font-family: "JetBrains Mono NL SemiBold";
+  font-style: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  box-shadow: 0 7px #0a0808;
+  cursor: pointer;
+}
+
+.process_buttons_increase:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
+
 .labels_process {
   color: #a9b1d6;
   font-size: 24px;
@@ -114,7 +141,7 @@ td {
   margin-right: 20px;
 }
 .cell {
-  background-color:#ff9e64;
+  background-color: #ff9e64;
   border: 0px;
 }
 
@@ -224,13 +251,24 @@ td {
   background-color: #e9ebf1;
   margin-bottom: 10px;
   border-radius: 7px;
+  box-shadow: 0 7px #040404;
+  cursor: pointer;
 }
+#button1:active {
+  background-color: #fafafa;
+  transform: translateY(4px);
+}
+
 #decrease {
-  background-color: #f7768e;
+  background-color: #db4b4b;
 }
+#decrease:hover{background-color: #ff0000}
+
 #increase {
-  background-color: #9ece6a;
+  background-color: #04AA6D;
 }
+#increase:hover{background-color: #0cf414}
+
 #process {
   color: #a9b1d6;
   font-size: 32px;
