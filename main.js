@@ -116,10 +116,10 @@ function proceed() {
       var cell3 = document.getElementById("BT" + i.toString()).value;
       var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
-      row_data["Process"] = cell1;
-      row_data["Arrival"] = cell2;
-      row_data["Burst"] = cell3;
-      row_data["Prio"] = cell4;
+      row_data["Process"] = +cell1;
+      row_data["Arrival"] = +cell2;
+      row_data["Burst"] = +cell3;
+      row_data["Prio"] = +cell4;
     }
     table_data.push(row_data);
   }
@@ -136,7 +136,7 @@ function compute_data() {
   // Sort process data based on arrival time, burst time, and priority  
   process_data.sort(function(a, b) {
      return a.Arrival - b.Arrival || a.Burst - b.Burst || a.Prio - b.Prio;
-  });
+  }); 
 
   //gantt chart generation depending on the number of processes
   //sort by arrival time 
