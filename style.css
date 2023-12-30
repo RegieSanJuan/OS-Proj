@@ -33,6 +33,9 @@ td {
   width: 150px;
   border: 4px solid;
 }
+th {
+  border: 4px solid;
+}
 /*CLASS*/
 .form1 {
   display: flex;
@@ -223,6 +226,46 @@ td {
   animation-name: form_slideUp;
   animation-duration: 1.5s;
 }
+#box3_5 {
+  width: 700px;
+  height: 330px;
+  background-color: #ff9e64;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#box3_6 {
+  width: 700px;
+  height: 360px;
+  background-color: #ff9e64;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#box3_7 {
+  width: 700px;
+  height: 390px;
+  background-color: #ff9e64;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
+#box3_8 {
+  width: 700px;
+  height: 420px;
+  background-color: #ff9e64;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 3px 3px 5px;
+  animation-name: form_slideUp;
+  animation-duration: 1.5s;
+}
 #box4 {
   width: 275px;
   height: 100px;
@@ -298,7 +341,7 @@ td {
   font-style: normal;
   margin-bottom: 15px;
 }
-#table {
+#tables {
   color: #000000;
   font-size: 24px;
   font-family: "JetBrains Mono NL ExtraBold";

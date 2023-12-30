@@ -14,60 +14,13 @@
   <body>
     <div id="box3" class="form2">
       <div class="form2">
-        <table id="table">
+        <table id="tables" load="generate_table()">
           <tr>
             <td class="font_color">Process</td>
             <td class="font_color">Arrival Time</td>
             <td class="font_color">Burst Time</tdclass=>
             <td class="font_color">Priority</td>
           </tr>
-          <!--<tr>
-            <td class="font_color">P1</td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-          </tr>
-          <tr>
-            <td class="font_color">P2</td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-          </tr>
-          <tr>
-            <td class="font_color">P3</td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-          <tr>
-            <td class="font_color">P4</td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-            <td>
-              <input class="cell" type="number" placeholder="0" min="0"></input>
-            </td>
-          </tr>-->
         </table>
       </div>
     </div>
@@ -78,6 +31,8 @@
         <button type="button" id="compute" onclick="proceed()">COMPUTE</button>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script src="main.js">
+      generate_table()
+    </script>
   </body>
 </html>
