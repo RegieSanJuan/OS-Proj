@@ -140,7 +140,7 @@ function compute_data() {
 
   //gantt chart generation depending on the number of processes
   //sort by arrival time 
-  //print and pop the data of index 0 in the array
+  //using queue print and pop the data of index 0 in the array
   //sort by priority number 
   //print the data in gantt chart
   //make the width of every cell in gantt chart depend on the burst time of every process
