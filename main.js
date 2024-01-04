@@ -3,8 +3,8 @@ let total_process = 4,
   p_number = 0,
   arrival_time = 0,
   burst_time = 0,
-  priority_num = 0;
-
+  priority_num = 0,
+  gantt = [];
 var data = [];
 var table_data = [];
 //const
@@ -122,20 +122,13 @@ function proceed() {
       row_data["Arrival"] = +cell2;
       row_data["Burst"] = +cell3;
       row_data["Prio"] = +cell4;
+      row_data["Round"] = 0;
+      row_data["Start"] = 0;
+      row_data["End"] = 0;
     }
     table_data.push(row_data);
   }
-  //sessionStorage.setItem("tableData", JSON.stringify(table_data));
-  var processes_arrival_burst_prio = [];
-  for (var i = 0; i < table_data.length; i++) {
-    var process = table_data[i]["Process"];
-    var arrival = table_data[i]["Arrival"];
-    var burst = table_data[i]["Burst"];
-    var prio = table_data[i]["Prio"];
-
-    processes_arrival_burst_prio.push([process, arrival, burst, prio]);
-  }
-
+  
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
   calculatePriorityValues(table_data);
   //window.open("compute.html", "_self");
@@ -144,42 +137,61 @@ function proceed() {
 function calculatePriorityValues(table_data) {
   var processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
+  
 
   processes.sort((a,b) => a.Arrival-b.Arrival)
+  
+  //console.log(processes);
 
   for(i = 1; i < n; i++)
-    for( j = )
-
-  
+    for( j =1; j< n; j++)
+    {
+      if(processes[i].Prio > processes[j].Prio)
+      {
+        var hold = processes[i];
+        processes[i] = processes[j];
+        processes [j] = hold;
+      }
+    
+    }
+  console.log(processes);
+  compute_data(table_data);
 }
 
+function compute_data(table_data) {
+  var processes = JSON.parse(sessionStorage.getItem("table_data"));
+  var comp = 0; ms = 0; num = 0;
+  var n = processes.length;
 
-function compute_data() {
-  // Get process data from session storage
-  var process_data = JSON.parse(sessionStorage.getItem("processes_data"));
-
-  // Sort process data based on arrival time, burst time, and priority
-  process_data.sort(function (a, b) {
-    return a.Arrival - b.Arrival || a.Burst - b.Burst || a.Prio - b.Prio;
-  });
-
-  //gantt chart generation depending on the number of processes
-  //sort by arrival time
-  //using queue print and pop the data of index 0 in the array
-  //sort by priority number
-  //print the data in gantt chart
-  //make the width of every cell in gantt chart depend on the burst time of every process
-
-  // Compute waiting time and turnaround time for each process
-  var current_time = 0;
-  for (var i = 0; i < process_data.length; i++) {
-    var process = process_data[i];
-    current_time += process.Arrival;
-    process.Waiting = current_time - process.Arrival;
-    process.Turnaround = process.Waiting + process.Burst;
-    current_time += process.Burst;
+  while ( comp  < n)
+  {
+    varindex = -1;
+    for(i = 0; i < n; i++) //process execution
+    {
+      if(processes[i].Arrival <= ms && processes[i].Round == 0)
+      {
+        index = i;
+        break;
+      }      
+    }
+    if(index != -1) //if no process is available to be executed
+    {
+      processes[index].Start = ms;
+      ms += processes[index].Burst;
+      processes[index].End = ms;
+      gantt[num] = processes[index];
+      processes[index].Round++;
+      comp++;
+      num++;
+    }
+    else
+    {
+      gantt[num].Process = 0;
+      num++;
+      ms++;
+    }
   }
 
-  // Store computed process data in session storage
-  sessionStorage.setItem("processes_data", JSON.stringify(process_data));
+ console.log("gantt");
+ console.log(gantt);
 }

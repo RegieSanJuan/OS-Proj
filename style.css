@@ -166,7 +166,7 @@ th {
   outline: none;
 }
 
-.cell:hover{
+.cell:active{
   background-color: #d78452;
 }
 
