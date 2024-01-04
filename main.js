@@ -10,7 +10,7 @@ var table_data = [];
 //const
 //ONCLICK ANIMATIONS
 generate_table()
-compute_data()
+//compute_data()
 
 //MAIN.HTML
 function decrease_process() {
@@ -101,13 +101,16 @@ function generate_table() {
 function back() {
   window.open("main.html", "_self");
 }
+
 function proceed() {
   var count = sessionStorage.getItem("processes");
   //var table = document.getElementById("tables");
   //var count = process_count;
   
 
-  for (var i = 1; i <= count; i++) {
+  var table_data = [];
+
+for (var i = 1; i <= count; i++) {
     var row_data = {};
 
     for (var j = 0; j <= 3; j++) {
@@ -122,14 +125,100 @@ function proceed() {
       row_data["Prio"] = +cell4;
     }
     table_data.push(row_data);
-  }
-  console.log(table_data);
-  window.JSON.stringify(setItem("processes_data", table_data));
-  window.open("compute.html", "_self");
+}
+sessionStorage.setItem("tableData", JSON.stringify(table_data));
+var processes_arrival_burst_prio = [];
+for (var i = 0; i < table_data.length; i++) {
+    var arrival = table_data[i]["Arrival"];
+    var burst = table_data[i]["Burst"];
+    var prio = table_data[i]["Prio"];
+
+    processes_arrival_burst_prio.push([arrival, burst, prio]);
+}
+
+window.JSON.stringify(setItem("processes_arrival_burst_prio", processes_arrival_burst_prio));
+window.open("compute.html", "_self");
 }
 
 
-function compute_data() {
+function calculatePriorityValues(processes_arrival_burst_prio) {
+  var n = processes_arrival_burst_prio.length;
+  var processes = new Array(n);
+  for (var i = 0; i < n; i++) {
+     processes[i] = new Process(processes_arrival_burst_prio[i][0], processes_arrival_burst_prio[i][1], processes_arrival_burst_prio[i][2]);
+  }
+ 
+  // Step 1: Find process with highest priority and lowest arrival time
+  for (var i = 0; i < n; i++) {
+     var max_priority = -1;
+     var min_arrival_time = Number.MAX_VALUE;
+     var index = -1;
+     for (var j = 0; j < n; j++) {
+       if (processes[j].arrival_time <= i && processes[j].remaining_burst > 0 && (processes[j].priority > max_priority || (processes[j].priority == max_priority && processes[j].arrival_time < min_arrival_time))) {
+         max_priority = processes[j].priority;
+         min_arrival_time = processes[j].arrival_time;
+         index = j;
+       }
+     }
+     if (index != -1) {
+       var executing_process = processes[index];
+       executing_process.remaining_burst--;
+       if (executing_process.remaining_burst == 0) {
+         executing_process.completion_time = i + 1;
+         executing_process.turnaround_time = executing_process.completion_time - executing_process.arrival_time;
+         executing_process.waiting_time = executing_process.turnaround_time - executing_process.burst_time;
+       }
+     }
+  }
+ 
+  // Step 2: Calculate turnaround time, waiting time for all processes
+  for (var i = 0; i < n; i++) {
+     if (processes[i].completion_time == -1) {
+       processes[i].completion_time = i + 1;
+       processes[i].turnaround_time = processes[i].completion_time - processes[i].arrival_time;
+       processes[i].waiting_time = processes[i].turnaround_time - processes[i].burst_time;
+     }
+  }
+ 
+  return processes;
+ }
+ // Function to sort the array of Process objects by their burst time in ascending order
+ function generateGanttChart(processes) {
+  var gantt_chart = "";
+  var total_processes = processes.length;
+  var total_time = processes[total_processes - 1].completion_time;
+ 
+  gantt_chart += "Gantt Chart: ";
+ 
+  for (var i = 0; i < total_time; i++) {
+     gantt_chart += "|";
+     for (var j = 0; j < total_processes; j++) {
+       if (processes[j].arrival_time <= i && i < processes[j].completion_time) {
+         gantt_chart += processes[j].process_id;
+         i = processes[j].completion_time - 1;
+         break;
+       }
+     }
+  }
+ 
+  gantt_chart += "|\n";
+ 
+  return gantt_chart;
+ }
+ // Main driver code
+ function computeAndDisplay() {
+  var processes_arrival_burst_prio = JSON.parse(sessionStorage.getItem("processes_arrival_burst_prio"));
+  var processes = calculatePriorityValues(processes_arrival_burst_prio);
+ 
+  var gantt_chart = generateGanttChart(processes);
+  console.log(gantt_chart);
+ 
+  // Display Gantt Chart in the webpage
+  document.getElementById("gantt_chart").innerText = gantt_chart;
+ }
+
+
+/*function compute_data() {
   // Get process data from session storage
   var process_data = JSON.parse(sessionStorage.getItem("processes_data"));
  
@@ -158,5 +247,5 @@ function compute_data() {
   // Store computed process data in session storage
   sessionStorage.setItem("processes_data", JSON.stringify(process_data));
  
- }
+ }*/
 
