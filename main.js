@@ -144,9 +144,15 @@ function proceed() {
 function calculatePriorityValues(table_data) {
   var processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
-  
+
+  processes.sort((a,b) => a.Arrival-b.Arrival)
+
+  for(i = 1; i < n; i++)
+    for( j = )
+
   
 }
+
 
 function compute_data() {
   // Get process data from session storage
