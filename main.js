@@ -7,6 +7,7 @@ let total_process = 4,
   gantt = [];
 var data = [];
 var table_data = [];
+var processes;
 //const
 //ONCLICK ANIMATIONS
 generate_table();
@@ -104,11 +105,8 @@ function back() {
 
 function proceed() {
   var count = sessionStorage.getItem("processes");
-  //var table = document.getElementById("tables");
-  //var count = process_count;
-
   var table_data = [];
-
+  gantt=[];
   for (var i = 1; i <= count; i++) {
     var row_data = {};
 
@@ -134,19 +132,17 @@ function proceed() {
   //window.open("compute.html", "_self");
 }
 
+
 function calculatePriorityValues(table_data) {
-  var processes = JSON.parse(sessionStorage.getItem("table_data"));
+  processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
   
-
   processes.sort((a,b) => a.Arrival-b.Arrival)
-  
-  //console.log(processes);
 
   for(i = 1; i < n; i++)
     for( j =1; j< n; j++)
     {
-      if(processes[i].Prio > processes[j].Prio)
+      if(processes[i].Prio < processes[j].Prio)
       {
         var hold = processes[i];
         processes[i] = processes[j];
@@ -154,44 +150,63 @@ function calculatePriorityValues(table_data) {
       }
     
     }
-  console.log(processes);
+    
   compute_data(table_data);
 }
 
-function compute_data(table_data) {
-  var processes = JSON.parse(sessionStorage.getItem("table_data"));
-  var comp = 0; ms = 0; num = 0;
+function compute_data() {
+  var comp = 0, ms = 0;
   var n = processes.length;
+
 
   while ( comp  < n)
   {
-    varindex = -1;
+    var index = -1; 
     for(i = 0; i < n; i++) //process execution
-    {
-      if(processes[i].Arrival <= ms && processes[i].Round == 0)
+    {  
+      if(processes[i].Arrival <= ms && processes[i].Round === 0)
       {
         index = i;
         break;
-      }      
+ 
+      } 
     }
     if(index != -1) //if no process is available to be executed
     {
       processes[index].Start = ms;
       ms += processes[index].Burst;
       processes[index].End = ms;
-      gantt[num] = processes[index];
+      gantt.push(processes[index]);
       processes[index].Round++;
       comp++;
-      num++;
     }
     else
     {
-      gantt[num].Process = 0;
-      num++;
+      gantt.push({Process: 0});
       ms++;
     }
   }
-
- console.log("gantt");
- console.log(gantt);
+  window.sessionStorage.setItem("output", JSON.stringify(gantt));
+  console.log(gantt);
+ gantt_chart();
 }
+
+function gantt_chart()
+{
+  gantt = JSON.parse(sessionStorage.getItem("output"));
+  var chart = document.getElementById("gantt_chart");
+  var number = gantt.length;
+  var chart_row = document.createElement("tr");
+  
+  for (var i = 0; i <= number; i++) {
+
+    var gantt_cell = document.createElement("th");
+      
+    gantt_cell.id = "gantt_cell" + i.toString();
+    gantt_cell.className = "cell";
+    gantt_cell.innerHTML = gantt[i].Process;
+  }
+}
+
+
+ 
