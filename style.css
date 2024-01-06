@@ -1,10 +1,10 @@
 /*FONTS*/
 @font-face{
-  src: url(font/JetBrainsMonoNLNerdFont-ExtraBold.ttf);
+  src: url(/assets/font/JetBrainsMonoNLNerdFont-ExtraBold.ttf);
   font-family: JetBrainsMonoNL NF ExtraBold;
 }
 @font-face{
-  src: url(font/JetBrainsMonoNerdFont-SemiBold.ttf);
+  src: url(/assets/font/JetBrainsMonoNerdFont-SemiBold.ttf);
   font-family: JetBrainsMono NF SemiBold;
 }
 /*MAIN ELEMENTS*/

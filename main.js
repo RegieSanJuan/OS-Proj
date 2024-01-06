@@ -106,7 +106,7 @@ function back() {
 function proceed() {
   var count = sessionStorage.getItem("processes");
   var table_data = [];
-  gantt=[];
+  gantt = [];
   for (var i = 1; i <= count; i++) {
     var row_data = {};
 
@@ -126,87 +126,99 @@ function proceed() {
     }
     table_data.push(row_data);
   }
-  
-  window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
-  calculatePriorityValues(table_data);
-  //window.open("compute.html", "_self");
-}
 
+  window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
+    calculatePriorityValues(table_data);
+}
 
 function calculatePriorityValues(table_data) {
   processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
-  
-  processes.sort((a,b) => a.Arrival-b.Arrival)
 
-  for(i = 1; i < n; i++)
-    for( j =1; j< n; j++)
-    {
-      if(processes[i].Prio < processes[j].Prio)
-      {
+  processes.sort((a, b) => a.Arrival - b.Arrival);
+
+  for (i = 1; i < n; i++)
+    for (j = 1; j < n; j++) {
+      if (processes[i].Prio < processes[j].Prio) {
         var hold = processes[i];
         processes[i] = processes[j];
-        processes [j] = hold;
+        processes[j] = hold;
       }
-    
     }
-    
+
   compute_data(table_data);
 }
 
 function compute_data() {
-  var comp = 0, ms = 0;
+  var comp = 0,
+    ms = 0;
   var n = processes.length;
 
-
-  while ( comp  < n)
-  {
-    var index = -1; 
-    for(i = 0; i < n; i++) //process execution
-    {  
-      if(processes[i].Arrival <= ms && processes[i].Round === 0)
-      {
+  while (comp < n) {
+    var index = -1;
+    for (i = 0;i < n;i++) {
+      if (processes[i].Arrival <= ms && processes[i].Round === 0) {
         index = i;
         break;
- 
-      } 
+      }
     }
-    if(index != -1) //if no process is available to be executed
-    {
+    if (index != -1) {
+      //if no process is available to be executed
       processes[index].Start = ms;
       ms += processes[index].Burst;
       processes[index].End = ms;
       gantt.push(processes[index]);
       processes[index].Round++;
       comp++;
-    }
-    else
-    {
-      gantt.push({Process: 0});
+    } else {
+      gantt.push({ Process: 0 });
       ms++;
     }
   }
-  window.sessionStorage.setItem("output", JSON.stringify(gantt));
-  console.log(gantt);
- gantt_chart();
+  //window.sessionStorage.setItem("output", JSON.stringify(gantt));
+  //console.log("gantt");
+  //console.log(gantt);
+  gantt_chart();
 }
 
-function gantt_chart()
-{
-  gantt = JSON.parse(sessionStorage.getItem("output"));
-  var chart = document.getElementById("gantt_chart");
+function gantt_chart() {
+  //var output = JSON.parse(sessionStorage.getItem("output"));
+  var div = document.getElementById("output");
   var number = gantt.length;
+  var chart = document.createElement("table");
   var chart_row = document.createElement("tr");
-  
-  for (var i = 0; i <= number; i++) {
+  var timestamp_div = document.getElementById("time_stamp");
 
-    var gantt_cell = document.createElement("th");
-      
-    gantt_cell.id = "gantt_cell" + i.toString();
-    gantt_cell.className = "cell";
-    gantt_cell.innerHTML = gantt[i].Process;
+  chart.id = "gantt_chart";
+
+  console.log("GANTT_CHART()");
+  console.log(gantt);
+
+  for (j = 0; j < 1; j++) {
+    for (i = 0; i < number; i++) {
+      var gantt_cell = document.createElement("th");
+
+      gantt_cell.id = "gantt_cell" + i.toString();
+      gantt_cell.innerHTML = gantt[i].Process;
+      chart_row.appendChild(gantt_cell);
+    }
+    chart.appendChild(chart_row);
+    div.appendChild(chart);
   }
+
+  /*for (i = 0; i <= number; i++) {
+    var timestamp = document.createElement("label");
+    timestamp.id = "timestamp";
+    var margin = document.createElement("div");
+    for (j = 0; j < gantt[i].Burst; j++) {
+      
+
+      gantt_cell.id = "gantt_cell" + i.toString();
+      gantt_cell.innerHTML = gantt[i].Process;
+      chart_row.appendChild(gantt_cell);
+      console.log(gantt[i]);
+    }
+    timestamp_div.appendChild(timestamp)
+    timestamp_div.appendChild(margin);
+  }*/
 }
-
-
- 
