@@ -34,6 +34,7 @@ td {
   border: 4px solid;
 }
 th {
+  width: 65px;
   border: 4px solid;
 }
 /*CLASS*/
@@ -170,6 +171,14 @@ th {
   background-color: #d78452;
 }
 
+.timestamp {
+  color: #16161e;
+  font-size: 18px;
+  font-family: "JetBrains Mono NL ExtraBold";
+  font-style: normal;
+  margin-top: 1px;
+}
+
 /*ID*/
 #box1 {
   width: 475px;
@@ -285,6 +294,8 @@ th {
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
+  /*display:none;*/
+  
 }
 #box6 {
   width: 1040px;
@@ -386,12 +397,35 @@ th {
   font-family: "JetBrains Mono NL ExtraBold";
   font-style: normal;
 }
-#timestamp {
-  color: #16161e;
-  font-size: 18px;
-  font-family: "JetBrains Mono NL ExtraBold";
-  font-style: normal;
-  margin-top: 1px;
+#margin0 {
+  width: 65px;
+}
+#margin1 {
+  width: 65px;
+}
+#margin2 {
+  width: 65px;
+}
+#margin3 {
+  width: 65px;
+}
+#margin4 {
+  width: 65px;
+}
+#margin5 {
+  width: 65px;
+}
+#margin6 {
+  width: 65px;
+}
+#margin7 {
+  width: 65px;
+}
+#margin8 {
+  width: 65px;
+}
+#margin9 {
+  width: 65px;
 }
 /*ANIMATIONS*/
 @keyframes slideUp {

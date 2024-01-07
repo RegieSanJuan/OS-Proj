@@ -104,6 +104,7 @@ function back() {
 }
 
 function proceed() {
+  //document.getElementById('box5').style.display = 'block';
   var count = sessionStorage.getItem("processes");
   var table_data = [];
   gantt = [];
@@ -128,7 +129,22 @@ function proceed() {
   }
 
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
+  
+   /*// Check if table data has any input or inadequate input
+  var hasInadequateInput = false;
+  table_data.forEach(function(row) {
+    if (!row["Arrival"] || !row["Burst"] || !row["Prio"] || row["Burst"] === 0 || row["Arrival"] != 0 || row["Burst"] != 0 ) {
+      hasInadequateInput = true;
+    }
+ });
+  // If inadequate input is found, show an alert and stop execution
+  if (hasInadequateInput) {
+  alert("There is no input or insufficient input for arrival, burst, or prio.");
+  return;
+  }
+     // If input is adequate, proceed to calculate priority */
     calculatePriorityValues(table_data);
+    
 }
 
 function calculatePriorityValues(table_data) {
@@ -188,14 +204,13 @@ function gantt_chart() {
   var chart = document.createElement("table");
   var chart_row = document.createElement("tr");
   var timestamp_div = document.getElementById("time_stamp");
-
+  let burst = 0;
+  let width = 65;
+  let p = 1;
   chart.id = "gantt_chart";
-
-  console.log("GANTT_CHART()");
-  console.log(gantt);
-
-  for (j = 0; j < 1; j++) {
-    for (i = 0; i < number; i++) {
+  
+  for (var j = 0; j < 1; j++) {
+    for (var i = 0; i < number; i++) {
       var gantt_cell = document.createElement("th");
 
       gantt_cell.id = "gantt_cell" + i.toString();
@@ -205,20 +220,38 @@ function gantt_chart() {
     chart.appendChild(chart_row);
     div.appendChild(chart);
   }
-
-  /*for (i = 0; i <= number; i++) {
+  
+  for (i = 0; i <= number; i++) {
     var timestamp = document.createElement("label");
-    timestamp.id = "timestamp";
+    timestamp.id = "time_label" + i.toString();
+    timestamp.className = "timestamp";
     var margin = document.createElement("div");
-    for (j = 0; j < gantt[i].Burst; j++) {
-      
+    margin.id = "margin" + i.toString();
 
-      gantt_cell.id = "gantt_cell" + i.toString();
-      gantt_cell.innerHTML = gantt[i].Process;
-      chart_row.appendChild(gantt_cell);
-      console.log(gantt[i]);
+    timestamp.innerHTML = burst;
+    timestamp_div.appendChild(timestamp);
+
+    if (i < number) {
+      var cell_width = document.getElementById("gantt_cell" + i.toString());
+      for (j = 0; j < gantt[i].Burst; j++) {
+        
+        margin.id = "margin" + i.toString();
+        width += 5;
+        burst++;
+      }
+      
+      console.log(p);
+      width.toString();
+      cell_width.style.width = width + "px";
+      margin.style.width = width + "px";
+      timestamp_div.appendChild(margin);
     }
-    timestamp_div.appendChild(timestamp)
-    timestamp_div.appendChild(margin);
-  }*/
+    width = 65;
+  }
 }
+
+//turnaround time, average turn around time, waiting time, avarage waiting time
+// 1 time button for compute
+// if no input alert
+// after compute 2nd division 
+// color 
