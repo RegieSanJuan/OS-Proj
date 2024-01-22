@@ -104,7 +104,7 @@ function back() {
 }
 
 function proceed() {
-  //document.getElementById('box5').style.display = 'block';
+  document.getElementById('box5').style.display = 'block';
   var count = sessionStorage.getItem("processes");
   var table_data = [];
   gantt = [];
@@ -117,6 +117,7 @@ function proceed() {
       var cell3 = document.getElementById("BT" + i.toString()).value;
       var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
+      //if(cell2 != ' ' && cell3 != ' ' && cell4 != ' ' && cell3 != 0){
       row_data["Process"] = cell1;
       row_data["Arrival"] = +cell2;
       row_data["Burst"] = +cell3;
@@ -124,27 +125,15 @@ function proceed() {
       row_data["Round"] = 0;
       row_data["Start"] = 0;
       row_data["End"] = 0;
-    }
+    } //else 
+      //{ alert("Tangina mo wala ka data ayusin mo")    }  
     table_data.push(row_data);
-  }
-
-  window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
-  
-   /*// Check if table data has any input or inadequate input
-  var hasInadequateInput = false;
-  table_data.forEach(function(row) {
-    if (!row["Arrival"] || !row["Burst"] || !row["Prio"] || row["Burst"] === 0 || row["Arrival"] != 0 || row["Burst"] != 0 ) {
-      hasInadequateInput = true;
     }
- });
-  // If inadequate input is found, show an alert and stop execution
-  if (hasInadequateInput) {
-  alert("There is no input or insufficient input for arrival, burst, or prio.");
-  return;
-  }
-     // If input is adequate, proceed to calculate priority */
+ // }
+  window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
+ 
     calculatePriorityValues(table_data);
-    
+
 }
 
 function calculatePriorityValues(table_data) {
@@ -208,6 +197,7 @@ function gantt_chart() {
   let width = 65;
   let p = 1;
   chart.id = "gantt_chart";
+
   
   for (var j = 0; j < 1; j++) {
     for (var i = 0; i < number; i++) {
@@ -236,7 +226,7 @@ function gantt_chart() {
       for (j = 0; j < gantt[i].Burst; j++) {
         
         margin.id = "margin" + i.toString();
-        width += 5;
+        width += 10;
         burst++;
       }
       

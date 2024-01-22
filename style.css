@@ -294,7 +294,7 @@ th {
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
-  /*display:none;*/
+  display:none;
   
 }
 #box6 {
@@ -426,6 +426,10 @@ th {
 }
 #margin9 {
   width: 65px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 /*ANIMATIONS*/
 @keyframes slideUp {
