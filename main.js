@@ -11,6 +11,7 @@ var processes;
 //const
 //ONCLICK ANIMATIONS
 generate_table();
+waitingtime();
 //compute_data()
 
 //MAIN.HTML
@@ -104,7 +105,7 @@ function back() {
 }
 
 function proceed() {
-  document.getElementById('box5').style.display = 'block';
+  document.getElementById("box5").style.display = "block";
   var count = sessionStorage.getItem("processes");
   var table_data = [];
   gantt = [];
@@ -112,28 +113,27 @@ function proceed() {
     var row_data = {};
 
     for (var j = 0; j <= 3; j++) {
-      var cell1 = document.getElementById("p" + i.toString()).textContent;
+      var cell1 = i;
       var cell2 = document.getElementById("AT" + i.toString()).value;
       var cell3 = document.getElementById("BT" + i.toString()).value;
       var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
       //if(cell2 != ' ' && cell3 != ' ' && cell4 != ' ' && cell3 != 0){
-      row_data["Process"] = cell1;
+      row_data["Process"] = +cell1;
       row_data["Arrival"] = +cell2;
       row_data["Burst"] = +cell3;
       row_data["Prio"] = +cell4;
       row_data["Round"] = 0;
       row_data["Start"] = 0;
       row_data["End"] = 0;
-    } //else 
-      //{ alert("Tangina mo wala ka data ayusin mo")    }  
+    } //else
+    //{ alert("Tangina mo wala ka data ayusin mo")    }
     table_data.push(row_data);
-    }
- // }
+  }
+  // }
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
- 
-    calculatePriorityValues(table_data);
 
+  calculatePriorityValues(table_data);
 }
 
 function calculatePriorityValues(table_data) {
@@ -161,7 +161,7 @@ function compute_data() {
 
   while (comp < n) {
     var index = -1;
-    for (i = 0;i < n;i++) {
+    for (i = 0; i < n; i++) {
       if (processes[i].Arrival <= ms && processes[i].Round === 0) {
         index = i;
         break;
@@ -180,7 +180,7 @@ function compute_data() {
       ms++;
     }
   }
-  //window.sessionStorage.setItem("output", JSON.stringify(gantt));
+  window.sessionStorage.setItem("output", JSON.stringify(gantt));
   //console.log("gantt");
   //console.log(gantt);
   gantt_chart();
@@ -198,19 +198,19 @@ function gantt_chart() {
   let p = 1;
   chart.id = "gantt_chart";
 
-  
   for (var j = 0; j < 1; j++) {
     for (var i = 0; i < number; i++) {
+      let process_num = gantt[i].Process;
+      process_num.toString();
       var gantt_cell = document.createElement("th");
-
       gantt_cell.id = "gantt_cell" + i.toString();
-      gantt_cell.innerHTML = gantt[i].Process;
+      gantt_cell.innerHTML = "P" + process_num.toString();
       chart_row.appendChild(gantt_cell);
     }
     chart.appendChild(chart_row);
     div.appendChild(chart);
   }
-  
+
   for (i = 0; i <= number; i++) {
     var timestamp = document.createElement("label");
     timestamp.id = "time_label" + i.toString();
@@ -224,13 +224,11 @@ function gantt_chart() {
     if (i < number) {
       var cell_width = document.getElementById("gantt_cell" + i.toString());
       for (j = 0; j < gantt[i].Burst; j++) {
-        
         margin.id = "margin" + i.toString();
         width += 10;
         burst++;
       }
-      
-      console.log(p);
+
       width.toString();
       cell_width.style.width = width + "px";
       margin.style.width = width + "px";
@@ -238,10 +236,49 @@ function gantt_chart() {
     }
     width = 65;
   }
+  turnaroundtime();
 }
+
+
+function turnaroundtime() {
+  var gantt = JSON.parse(sessionStorage.getItem("output"));
+  var total_tat = document.getElementById("total_TAT");
+  var ave_tat = document.getElementById("ave_TAT");
+ 
+  var turnaround_time = 0;
+  var average_tat = 0;
+  var total_turnaroundtime = 0;
+  var processes_tat = 0;
+  gantt.sort((a, b) => a.Process - b.Process);
+  console.log(gantt);
+  for(var i = 0; i<= gantt.length; i++)
+  {
+    var end_time = 0
+    end_time = gantt[i].End;
+    turnaround_time = end_time - gantt[i].Arrival;
+    total_turnaroundtime += turnaround_time;
+    //processes_tat += turnaround_time + ', ';
+    console.log(total_turnaroundtime);
+    //console.log(processes_tat);
+  }
+  var turnaround;
+  turnaround = total_turnaroundtime.toString();
+  console.log(turnaround);
+  total_tat.innerHTML = turnaround + "ms";
+}
+/*function waitingtime() {
+  var total_wt = document.getElementById("total_WT");
+  var ave_wt = document.getElementById("ave_WT");
+
+  //waiting_time = start - arrival
+  //average_wt = total_wt /no.of process
+
+  //total_tat.innerHTML = ;
+  //ave_tat.innerHTML = ;
+}*/
 
 //turnaround time, average turn around time, waiting time, avarage waiting time
 // 1 time button for compute
 // if no input alert
-// after compute 2nd division 
-// color 
+// after compute 2nd division
+// color
