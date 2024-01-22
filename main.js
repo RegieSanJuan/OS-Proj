@@ -250,21 +250,12 @@ function turnaroundtime() {
   var total_turnaroundtime = 0;
   var processes_tat = 0;
   gantt.sort((a, b) => a.Process - b.Process);
-  console.log(gantt);
-  for(var i = 0; i<= gantt.length; i++)
+  for(var i = 0; i< gantt.length; i++)
   {
-    var end_time = 0
-    end_time = gantt[i].End;
-    turnaround_time = end_time - gantt[i].Arrival;
+    turnaround_time = gantt[i].End - gantt[i].Arrival;
     total_turnaroundtime += turnaround_time;
-    //processes_tat += turnaround_time + ', ';
-    console.log(total_turnaroundtime);
-    //console.log(processes_tat);
   }
-  var turnaround;
-  turnaround = total_turnaroundtime.toString();
-  console.log(turnaround);
-  total_tat.innerHTML = turnaround + "ms";
+  total_tat.innerHTML = total_turnaroundtime + "ms";
 }
 /*function waitingtime() {
   var total_wt = document.getElementById("total_WT");
