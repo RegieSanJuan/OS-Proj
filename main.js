@@ -1,17 +1,11 @@
 let total_process = 4,
   process_count = 0,
-  p_number = 0,
-  arrival_time = 0,
-  burst_time = 0,
-  priority_num = 0,
   gantt = [];
-var data = [];
-var table_data = [];
 var processes;
 //const
 //ONCLICK ANIMATIONS
 generate_table();
-waitingtime();
+//waitingtime();
 //compute_data()
 
 //MAIN.HTML
@@ -38,8 +32,6 @@ function generate_table() {
   process_count = sessionStorage.getItem("processes");
   var Table = document.getElementById("tables");
   var count = process_count;
-  //count = Number(count);
-  //Table.innerHTML = "";
   if (count == 5) {
     document.getElementById("box3").id = "box3_5";
   }
@@ -142,15 +134,14 @@ function calculatePriorityValues(table_data) {
 
   processes.sort((a, b) => a.Arrival - b.Arrival);
 
-  for (i = 1; i < n; i++)
-    for (j = 1; j < n; j++) {
+  for (var i = 1; i < n; i++)
+    for (var j = 1; j < n; j++) {
       if (processes[i].Prio < processes[j].Prio) {
         var hold = processes[i];
         processes[i] = processes[j];
         processes[j] = hold;
       }
     }
-
   compute_data(table_data);
 }
 
@@ -161,14 +152,13 @@ function compute_data() {
 
   while (comp < n) {
     var index = -1;
-    for (i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       if (processes[i].Arrival <= ms && processes[i].Round === 0) {
         index = i;
         break;
       }
     }
     if (index != -1) {
-      //if no process is available to be executed
       processes[index].Start = ms;
       ms += processes[index].Burst;
       processes[index].End = ms;
@@ -181,21 +171,19 @@ function compute_data() {
     }
   }
   window.sessionStorage.setItem("output", JSON.stringify(gantt));
-  //console.log("gantt");
-  //console.log(gantt);
   gantt_chart();
 }
 
 function gantt_chart() {
-  //var output = JSON.parse(sessionStorage.getItem("output"));
   var div = document.getElementById("output");
   var number = gantt.length;
   var chart = document.createElement("table");
   var chart_row = document.createElement("tr");
   var timestamp_div = document.getElementById("time_stamp");
   let burst = 0;
-  let width = 65;
-  let p = 1;
+  let width = 50;
+  let margin_width = 50;
+
   chart.id = "gantt_chart";
 
   for (var j = 0; j < 1; j++) {
@@ -225,51 +213,106 @@ function gantt_chart() {
       var cell_width = document.getElementById("gantt_cell" + i.toString());
       for (j = 0; j < gantt[i].Burst; j++) {
         margin.id = "margin" + i.toString();
-        width += 10;
+        width += 3;
+        margin_width += 2;
         burst++;
       }
 
       width.toString();
       cell_width.style.width = width + "px";
-      margin.style.width = width + "px";
+      margin.style.width = margin_width + "px";
       timestamp_div.appendChild(margin);
     }
-    width = 65;
+    margin_width = 50;
+    width = 50;
   }
-  turnaroundtime();
+  tat_wt();
 }
 
-
-function turnaroundtime() {
+function tat_wt() {
   var gantt = JSON.parse(sessionStorage.getItem("output"));
   var total_tat = document.getElementById("total_TAT");
   var ave_tat = document.getElementById("ave_TAT");
- 
-  var turnaround_time = 0;
-  var average_tat = 0;
-  var total_turnaroundtime = 0;
-  var processes_tat = 0;
-  gantt.sort((a, b) => a.Process - b.Process);
-  for(var i = 0; i< gantt.length; i++)
-  {
-    turnaround_time = gantt[i].End - gantt[i].Arrival;
-    total_turnaroundtime += turnaround_time;
-  }
-  total_tat.innerHTML = total_turnaroundtime + "ms";
-}
-/*function waitingtime() {
+  var ptat_div = document.getElementById("process_tat");
+
   var total_wt = document.getElementById("total_WT");
   var ave_wt = document.getElementById("ave_WT");
+  var pwt_div = document.getElementById("process_wt");
 
-  //waiting_time = start - arrival
-  //average_wt = total_wt /no.of process
+  var num = 0;
+  var turnaround_time = 0;
+  var average_tat = 0;
+  var waiting_time = 0;
+  var average_wt = 0;
 
-  //total_tat.innerHTML = ;
-  //ave_tat.innerHTML = ;
-}*/
+  var length = gantt.length;
+  var total_waitingtime = 0;
+  var total_turnaroundtime = 0;
 
-//turnaround time, average turn around time, waiting time, avarage waiting time
-// 1 time button for compute
-// if no input alert
-// after compute 2nd division
-// color
+  if (length == 5) {
+    document.getElementById("box5").id = "box5_5";
+    document.getElementById("box7").id = "box7_5";
+    document.getElementById("box7").id = "box7_5";
+  }
+  if (length == 6) {
+    document.getElementById("box5").id = "box5_6";
+    document.getElementById("box7").id = "box7_6";
+    document.getElementById("box7").id = "box7_6";
+  }
+  if (length == 7) {
+    document.getElementById("box5").id = "box5_7";
+    document.getElementById("box7").id = "box7_7";
+    document.getElementById("box7").id = "box7_7";
+  }
+  if (length == 8) {
+    document.getElementById("box5").id = "box5_8";
+    document.getElementById("box7").id = "box7_8";
+    document.getElementById("box7").id = "box7_8";
+  }
+
+  gantt.sort((a, b) => a.Process - b.Process);
+  for (var i = 0; i < gantt.length; i++) {
+    num++;
+    var p_tat = document.createElement("p");
+    var p_wt = document.createElement("p");
+
+    turnaround_time = gantt[i].End - gantt[i].Arrival;
+    waiting_time = gantt[i].Start - gantt[i].Arrival;
+
+    p_tat.id = "ptat_" + num.toString();
+    p_tat.className = "time_subcontent";
+    p_wt.id = "pwt_" + num.toString();
+    p_wt.className = "time_subcontent";
+
+    p_tat.innerHTML =
+      "P" +
+      num.toString() +
+      ": " +
+      gantt[i].End +
+      " - " +
+      gantt[i].Arrival +
+      " = " +
+      turnaround_time;
+    p_wt.innerHTML =
+      "P" +
+      num.toString() +
+      ": " +
+      gantt[i].Start +
+      " - " +
+      gantt[i].Arrival +
+      " = " +
+      waiting_time;
+    ptat_div.appendChild(p_tat);
+    pwt_div.appendChild(p_wt);
+
+    total_turnaroundtime += turnaround_time;
+    total_waitingtime += waiting_time;
+  }
+  average_tat = total_turnaroundtime / length;
+  average_wt = total_waitingtime / length;
+
+  total_tat.innerHTML = total_turnaroundtime + " ms";
+  ave_tat.innerHTML = average_tat.toFixed(2) + " ms";
+  total_wt.innerHTML = total_waitingtime + " ms";
+  ave_wt.innerHTML = average_wt.toFixed(2) + " ms";
+}
