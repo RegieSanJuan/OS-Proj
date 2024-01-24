@@ -110,7 +110,7 @@ function proceed() {
       var cell3 = document.getElementById("BT" + i.toString()).value;
       var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
-      //if(cell2 != ' ' && cell3 != ' ' && cell4 != ' ' && cell3 != 0){
+      if(cell2 != ' ' && cell3 != ' ' && cell4 != ' ' && cell3 != 0){
       row_data["Process"] = +cell1;
       row_data["Arrival"] = +cell2;
       row_data["Burst"] = +cell3;
@@ -118,11 +118,11 @@ function proceed() {
       row_data["Round"] = 0;
       row_data["Start"] = 0;
       row_data["End"] = 0;
-    } //else
-    //{ alert("Tangina mo wala ka data ayusin mo")    }
+    } else
+    { alert("Tangina mo wala ka data ayusin mo")    }
     table_data.push(row_data);
   }
-  // }
+   }
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
 
   calculatePriorityValues(table_data);
