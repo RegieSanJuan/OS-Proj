@@ -28,7 +28,7 @@ h3 {
 }
 
 body {
-  background-color: #16161e;
+  background-color: #282828;
 }
 
 table {
@@ -72,67 +72,62 @@ th {
   box-shadow: 3px 3px 5px;
 }
 
-
-
 /*MAIN.HTML*/
 
-.box {
+/*.box {
   animation-name: slideUp;
   animation-duration: 1.5s;
-}
+}*/
 
-.error {
+/*.error {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
-}
+}*/
 
 .process_buttons_decrease {
   height: 50px;
   width: 50px;
-  color: #16161e;
+  color: #282828;
   font-size: 32px;
   font-family: "JetBrainsMono NF SemiBold";
   font-style: normal;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 15px;
-  border-radius: 20px;
-  box-shadow: 0 7px #0a0808;
+  border-radius: 25px;
+  box-shadow: 0 7px #3c3836;
   cursor: pointer;
 }
 
 .process_buttons_decrease:active {
-  background-color: #3e8e41;
   transform: translateY(4px);
 }
 
 .process_buttons_increase {
   height: 50px;
   width: 50px;
-  color: #16161e;
+  color: #282828;
   font-size: 32px;
   font-family: "JetBrainsMono NF SemiBold";
   font-style: normal;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 15px;
-  border-radius: 20px;
-  box-shadow: 0 7px #0a0808;
+  border-radius: 25px;
+  box-shadow: 0 7px #3c3836;
   cursor: pointer;
 }
 
 .process_buttons_increase:active {
-  background-color: #3e8e41;
   transform: translateY(4px);
 }
 
 .labels_process {
-  color: #a9b1d6;
+  color: #282828;
   font-size: 24px;
-  font-family: "JetBrainsMono NF SemiBold";
+  font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
-  margin-bottom: 7px;
-  margin-top: 7px;
+  margin-bottom: 10px;
 }
 
 #wrapper {
@@ -140,34 +135,36 @@ th {
   justify-content: center;
   margin-top: 200px;
   width: auto;
-  height: 250px;
+  animation-name: form_slideUp;
+  animation-duration: 2s;
 }
 
 #input {
-  margin: 20px;
+  margin: 50px;
 }
 
 #box2 {
-  width: 600px;
-  height: 200px;
-  background-color: #2c324a;
-  border-radius: 10px;
+  width: 700px;
+  height: 275px;
+  background-color: #ebdbb2;
+  color: #282828;
+  border-radius: 15px;
   text-align: center;
   margin: auto;
   box-shadow: 3px 3px 5px;
-  animation-name: form_slideUp;
-  animation-duration: 1.5s;
 }
 
 #error_box {
   position: absolute;
-  width: 300px;
-  height: 200px;
-  background-color: #2c324a;
-  border-radius: 20px;
+  width: 350px;
+  height: 275px;
+  background-color: #fe8019;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   text-align: center;
-  color: #a9b1d6;
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -176,38 +173,57 @@ th {
   flex-direction: column;
 }
 
+#header {
+  font-size: 20px;
+}
+
+#process {
+  color: #282828;
+  font-size: 32px;
+  font-family: "JetBrainsMonoNL NF ExtraBold";
+  font-style: normal;
+  margin-top: 5px;
+}
+
+#button_align {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #button1 {
-  width: 70px;
-  height: 30px;
+  width: 50px;
+  height: 40px;
   font-size: 16px;
   font-family: "JetBrainsMono NF SemiBold";
   font-style: normal;
-  background-color: #e9ebf1;
+  color: #ebdbb2;
+  background-color: #282828;
+  margin-top: 5px;
   margin-bottom: 10px;
-  border-radius: 7px;
-  box-shadow: 0 7px #040404;
+  border-radius: 15px;
+  box-shadow: 0 7px #3c3836;
   cursor: pointer;
 }
 
 #button1:active {
-  background-color: #fafafa;
+  background-color: #282828;
   transform: translateY(4px);
 }
 
 #decrease {
-  background-color: #db4b4b;
+  background-color: #cc241d;
 }
 
 #decrease:hover {
-  background-color: #ff0000;
+  background-color: #fb4934;
 }
 
 #increase {
-  background-color: #04aa6d;
+  background-color: #689d6a;
 }
 
 #increase:hover {
-  background-color: #0cf414;
+  background-color: #8ec07c;
 }
 
 /*PROCESS.HTML*/
@@ -217,8 +233,6 @@ th {
   justify-content: center;
   align-items: center;
 }
-
-
 
 #box3 {
   width: 700px;
@@ -329,6 +343,7 @@ th {
   align-items: center;
   justify-content: center;
 }
+
 #box4 {
   width: 275px;
   height: 100px;
@@ -456,7 +471,6 @@ th {
   margin-right: 10px;
 }
 
-
 .timestamp {
   color: #16161e;
   font-size: 14px;
@@ -581,14 +595,6 @@ th {
   margin-bottom: 7px;
 }
 
-#process {
-  color: #a9b1d6;
-  font-size: 32px;
-  font-family: "JetBrainsMono NF SemiBold";
-  font-style: normal;
-  margin-bottom: 15px;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -606,7 +612,7 @@ html {
 
 @keyframes form_slideUp {
   from {
-    transform: translateY(20%);
+    transform: translateY(10%);
   }
 
   0% {
