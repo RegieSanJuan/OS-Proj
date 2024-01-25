@@ -15,19 +15,27 @@
 </header>
 
 <body>
-  <div id="box3" class="form2">
-    <div class="form2">
-      <table id="tables" load="generate_table()">
-        <tr>
-          <td>Process</td>
-          <td>Arrival Time</td>
-          <td>Burst Time</tdclass=>
-          <td>Priority</td>
-        </tr>
-      </table>
+  <div id="flex">
+    <div id="box3" class="form2">
+      <div class="form2">
+        <table id="tables" load="generate_table()">
+          <tr>
+            <td>PROCESS</td>
+            <td>ARRIVAL TIME</td>
+            <td>BURST TIME</tdclass=>
+            <td>PRIORITY</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="box4" class="buttons">
+      <div class="group">
+        <button type="button" id="previous" onclick="back()">&#xf053;</button>
+        <div id="margin"></div>
+        <button type="button" id="compute" onclick="proceed()">&#xf078;</button>
+      </div>
     </div>
   </div>
-
   <div id="box5">
     <div class="group">
       <div id="box6">
@@ -83,13 +91,7 @@
       </div>
     </div>
   </div>
-  <div id="box4" class="buttons">
-    <div class="group">
-      <button type="button" id="previous" onclick="back()">PREVIOUS</button>
-      <div id="margin"></div>
-      <button type="button" id="compute" onclick="proceed()">COMPUTE</button>
-    </div>
-  </div>
+
   <script src="main.js">
     generate_table()
   </script>

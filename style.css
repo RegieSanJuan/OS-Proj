@@ -8,7 +8,10 @@
   src: url(assets/font/JetBrainsMonoNerdFont-SemiBold.ttf);
   font-family: JetBrainsMono NF SemiBold;
 }
-
+@font-face {
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+  font-family: awesome-font;
+}
 /*MAIN ELEMENTS*/
 header {
   margin: 15px;
@@ -37,7 +40,7 @@ table {
 
 td {
   height: 30px;
-  width: 150px;
+  width: 135px;
   border: 4px solid;
 }
 
@@ -45,7 +48,6 @@ th {
   width: 50px;
   border: 4px solid;
 }
-
 /*UNIVERSAL CLASS AND ID??*/
 .form1 {
   display: flex;
@@ -127,7 +129,7 @@ th {
   font-size: 24px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #wrapper {
@@ -174,7 +176,7 @@ th {
 }
 
 #header {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #process {
@@ -198,7 +200,7 @@ th {
   font-style: normal;
   color: #ebdbb2;
   background-color: #282828;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 15px;
   box-shadow: 0 7px #3c3836;
@@ -235,10 +237,10 @@ th {
 }
 
 #box3 {
-  width: 700px;
-  height: 325px;
+  width: 650px;
+  height: 250px;
   background-color: #ff9e64;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
@@ -246,10 +248,10 @@ th {
 }
 
 #box3_5 {
-  width: 700px;
-  height: 330px;
+  width: 650px;
+  height: 300px;
   background-color: #ff9e64;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
@@ -257,10 +259,10 @@ th {
 }
 
 #box3_6 {
-  width: 700px;
-  height: 360px;
+  width: 650px;
+  height: 330px;
   background-color: #ff9e64;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
@@ -268,10 +270,10 @@ th {
 }
 
 #box3_7 {
-  width: 700px;
-  height: 390px;
+  width: 650px;
+  height: 360px;
   background-color: #ff9e64;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
@@ -279,10 +281,10 @@ th {
 }
 
 #box3_8 {
-  width: 700px;
-  height: 420px;
+  width: 650px;
+  height: 390px;
   background-color: #ff9e64;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 40px auto;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
@@ -290,20 +292,22 @@ th {
 }
 
 #tables {
-  color: #000000;
-  font-size: 24px;
+  color: #282828;
+  font-size: 18px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
+  text-align: center;
 }
 
 .cell {
   display: grid;
-  width: 150px;
-  height: 30px;
+  width: 135px;
+  height: 25px;
   font-family: "JetBrainsMono NF SemiBold";
-  font-size: 24px;
+  font-size: 20px;
   align-items: center;
   text-align: center;
+  color: #282828;
   background-color: #ff9e64;
   border: none;
   outline: none;
@@ -344,12 +348,15 @@ th {
   justify-content: center;
 }
 
+#flex {
+  display: flex;
+}
 #box4 {
   width: 275px;
   height: 100px;
   background-color: #2c324a;
   border-radius: 20px;
-  margin: 0px auto;
+  margin-left: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: form_slideUp;
   animation-duration: 1.5s;
