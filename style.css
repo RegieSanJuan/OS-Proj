@@ -390,8 +390,8 @@ th {
   width: 800px;
   height: 605px;
   background-color: #2c324a;
-  border-radius: 20px;
-  margin: 40px auto;
+  border-radius: 15px;
+  margin: 20px auto;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -402,8 +402,8 @@ th {
   width: 800px;
   height: 625px;
   background-color: #2c324a;
-  border-radius: 20px;
-  margin: 40px auto;
+  border-radius: 15px;
+  margin: 20px auto;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -414,8 +414,8 @@ th {
   width: 800px;
   height: 665px;
   background-color: #2c324a;
-  border-radius: 20px;
-  margin: 40px auto;
+  border-radius: 15px;
+  margin: 20px auto;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -426,8 +426,8 @@ th {
   width: 800px;
   height: 685px;
   background-color: #2c324a;
-  border-radius: 20px;
-  margin: 40px auto;
+  border-radius: 15px;
+  margin: 20px auto;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -438,8 +438,8 @@ th {
   width: 800px;
   height: 705px;
   background-color: #2c324a;
-  border-radius: 20px;
-  margin: 40px auto;
+  border-radius: 15px;
+  margin: 20px auto;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
