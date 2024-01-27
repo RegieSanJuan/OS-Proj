@@ -214,8 +214,12 @@ function gantt_chart() {
       var cell_width = document.getElementById("gantt_cell" + i.toString());
       for (j = 0; j < gantt[i].Burst; j++) {
         margin.id = "margin" + i.toString();
-        width += 3;
-        margin_width += 2;
+        width += 2;
+        if (gantt[i].End < 10) {
+          margin_width += 1.5;
+        } else {
+          margin_width += 1;
+        }
         burst++;
       }
 

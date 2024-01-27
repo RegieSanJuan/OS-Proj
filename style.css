@@ -387,72 +387,66 @@ th {
 }
 
 #box5 {
-  width: 800px;
-  height: 605px;
-  background-color: #2c324a;
+  /*width: 800px;
+  height: 555px;
+  background-color: #2c324a;*/
   border-radius: 15px;
   margin: 20px auto;
-  box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
 }
 
 #box5_5 {
-  width: 800px;
-  height: 625px;
-  background-color: #2c324a;
+  /*width: 800px;
+  height: 575px;
+  background-color: #2c324a;*/
   border-radius: 15px;
   margin: 20px auto;
-  box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
 }
 
 #box5_6 {
-  width: 800px;
-  height: 665px;
-  background-color: #2c324a;
+  /*width: 800px;
+  height: 615px;
+  background-color: #2c324a;*/
   border-radius: 15px;
   margin: 20px auto;
-  box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
 }
 
 #box5_7 {
-  width: 800px;
-  height: 685px;
-  background-color: #2c324a;
+  /*width: 800px;
+  height: 635px;
+  background-color: #2c324a;*/
   border-radius: 15px;
   margin: 20px auto;
-  box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
 }
 
 #box5_8 {
-  width: 800px;
-  height: 705px;
-  background-color: #2c324a;
+  /*width: 800px;
+  height: 655px;
+  background-color: #2c324a;*/
   border-radius: 15px;
   margin: 20px auto;
-  box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
 }
 
 #box6 {
-  width: 740px;
-  height: 250px;
-  background-color: #ff9e64;
-  border-radius: 20px;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  width: 710px;
+  height: 200px;
+  background-color: #ebdbb2;
+  border-radius: 10px;
+  margin-bottom: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -460,7 +454,7 @@ th {
 
 #gantt {
   /*height: 50px;*/
-  color: #16161e;
+  color: #282828;
   font-size: 36px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
@@ -475,7 +469,7 @@ th {
 
 .time_title {
   height: 30px;
-  color: #16161e;
+  color: #282828;
   font-size: 32px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
@@ -484,7 +478,7 @@ th {
 
 .time_content {
   /*height: 50px;*/
-  color: #16161e;
+  color: #282828;
   font-size: 20px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
@@ -492,7 +486,7 @@ th {
 }
 
 .time_subcontent {
-  color: #16161e;
+  color: #282828;
   font-size: 18px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
@@ -503,7 +497,7 @@ th {
 }
 
 .timestamp {
-  color: #16161e;
+  color: #282828;
   font-size: 14px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
@@ -513,9 +507,9 @@ th {
 #box7 {
   width: 350px;
   height: 250px;
-  background-color: #73daca;
-  border-radius: 20px;
-  margin: 20px;
+  background-color: #458588;
+  border-radius: 10px;
+  margin: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -524,9 +518,9 @@ th {
 #box7_5 {
   width: 350px;
   height: 270px;
-  background-color: #73daca;
-  border-radius: 20px;
-  margin: 20px;
+  background-color: #458588;
+  border-radius: 10px;
+  margin: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -535,10 +529,10 @@ th {
 #box7_6 {
   width: 350px;
   height: 320px;
-  background-color: #73daca;
-  border-radius: 20px;
-  margin: 20px;
-  box-shadow: 3px 3px 5px;
+  background-color: #458588;
+  border-radius: 10px;
+  margin: 5px;
+  box-shadow: 3px 3px5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
 }
@@ -546,9 +540,9 @@ th {
 #box7_7 {
   width: 350px;
   height: 340px;
-  background-color: #73daca;
-  border-radius: 20px;
-  margin: 20px;
+  background-color: #458588;
+  border-radius: 10px;
+  margin: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
@@ -557,16 +551,16 @@ th {
 #box7_8 {
   width: 350px;
   height: 360px;
-  background-color: #73daca;
-  border-radius: 20px;
-  margin: 20px;
+  background-color: #458588;
+  border-radius: 10px;
+  margin: 5px;
   box-shadow: 3px 3px 5px;
   animation-name: box_slideUp;
   animation-duration: 1.5s;
 }
 
 #gantt_chart {
-  color: #16161e;
+  color: #282828;
   font-size: 20px;
   font-family: "JetBrainsMonoNL NF ExtraBold";
   font-style: normal;
