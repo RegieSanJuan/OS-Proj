@@ -100,36 +100,47 @@ function proceed() {
   document.getElementById("box5").style.display = "block";
   var count = sessionStorage.getItem("processes");
   var table_data = [];
+  var bool;
   gantt = [];
   for (var i = 1; i <= count; i++) {
     var row_data = {};
+    var cell1 = i;
+    var cell2 = document.getElementById("AT" + i.toString()).value;
+    var cell3 = document.getElementById("BT" + i.toString()).value;
+    var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
-    for (var j = 0; j <= 3; j++) {
-      var cell1 = i;
-      var cell2 = document.getElementById("AT" + i.toString()).value;
-      var cell3 = document.getElementById("BT" + i.toString()).value;
-      var cell4 = document.getElementById("PRIO" + i.toString()).value;
-
-      if (cell2 != " " && cell3 != " " && cell4 != " " && cell3 != 0) {
-        row_data["Process"] = +cell1;
-        row_data["Arrival"] = +cell2;
-        row_data["Burst"] = +cell3;
-        row_data["Prio"] = +cell4;
-        row_data["Round"] = 0;
-        row_data["Start"] = 0;
-        row_data["End"] = 0;
-      } else {
-        alert("Tangina mo wala ka data ayusin mo");
-      }
+    if (cell2 != " " && cell3 != " " && cell4 != " " && cell3 != 0) {
+      row_data["Process"] = +cell1;
+      row_data["Arrival"] = +cell2;
+      row_data["Burst"] = +cell3;
+      row_data["Prio"] = +cell4;
+      row_data["Round"] = 0;
+      row_data["Start"] = 0;
+      row_data["End"] = 0;
+      table_data.push(row_data);
+      bool = true;
+    } else {
+      bool = false;
+      let popup = document.getElementById("popup");
+      popup.style.visibility = "visible";
+      popup.style.top = "50%";
+      popup.style.transform = "translate(-50%,-50%)scale(1)";
     }
-    table_data.push(row_data);
   }
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
-
-  calculatePriorityValues(table_data);
+  window.sessionStorage.setItem("condition", JSON.stringify(bool));
+  condition();
 }
 
-function calculatePriorityValues(table_data) {
+function condition() {
+  let bool = JSON.parse(sessionStorage.getItem("condition"));
+  if (bool === true) {
+    calculatePriorityValues();
+  } else {
+    proceed();
+  }
+}
+function calculatePriorityValues() {
   processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
 
@@ -143,12 +154,13 @@ function calculatePriorityValues(table_data) {
         processes[j] = hold;
       }
     }
-  compute_data(table_data);
+  compute_data();
 }
 
 function compute_data() {
   var comp = 0,
-    ms = 0;
+    ms = 0,
+    idle_index = 1;
   var n = processes.length;
 
   while (comp < n) {
@@ -167,10 +179,26 @@ function compute_data() {
       processes[index].Round++;
       comp++;
     } else {
+      /*let idle = {}, 
+        start = processes[comp].end,
+        end =  processes[comp].End;
+      idle["Process"] = 0;
+      idle["Arrival"] = processes[comp].End;
+      idle["Burst"] = end - start;
+      idle_index++;
+      ms++;
+      let idle_end = idle["Burst"] + ms;
+      console.log(processes[comp].End);
+      console.log(processes[comp].Arrival);
+      idle["Round"] = 1;
+      idle["Start"] = ms;
+      idle["End"] = idle["Burst"];
+      gantt.push(idle);*/
       gantt.push({ Process: 0 });
       ms++;
     }
   }
+  console.log(gantt);
   window.sessionStorage.setItem("output", JSON.stringify(gantt));
   gantt_chart();
 }
@@ -181,10 +209,10 @@ function gantt_chart() {
   var chart = document.createElement("table");
   var chart_row = document.createElement("tr");
   var timestamp_div = document.getElementById("time_stamp");
-  let burst = 0;
+  let burst = gantt[0].Arrival;
   let width = 50;
   let margin_width = 50;
-
+  console.log(number);
   chart.id = "gantt_chart";
 
   for (var j = 0; j < 1; j++) {
@@ -222,7 +250,6 @@ function gantt_chart() {
         }
         burst++;
       }
-
       width.toString();
       cell_width.style.width = width + "px";
       margin.style.width = margin_width + "px";
@@ -235,6 +262,7 @@ function gantt_chart() {
 }
 
 function tat_wt() {
+  document.getElementById("box5").style.visibility = "visible";
   var gantt = JSON.parse(sessionStorage.getItem("output"));
   var total_tat = document.getElementById("total_TAT");
   var ave_tat = document.getElementById("ave_TAT");
@@ -320,4 +348,12 @@ function tat_wt() {
   ave_tat.innerHTML = average_tat.toFixed(2) + " ms";
   total_wt.innerHTML = total_waitingtime + " ms";
   ave_wt.innerHTML = average_wt.toFixed(2) + " ms";
+}
+
+let popup = document.getElementById("popup");
+
+function closepopup() {
+  popup.style.visibility = "hidden";
+  popup.style.top = "0%";
+  popup.style.transform = "translate(-50%,-50%)scale(0.1)";
 }

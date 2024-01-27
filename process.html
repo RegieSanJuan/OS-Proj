@@ -31,6 +31,12 @@
     <div id="box4" class="buttons">
       <button type="button" id="previous" onclick="back()">&#xf053;</button>
       <button type="button" id="compute" onclick="proceed()">&#xf078;</button>
+      <div class="popup" id="popup">
+        <img src="assets/img/cancel.png">
+        <h2>Error!</h2>
+        <p>please fill out all the required fields properly</p>
+        <button type="button" onclick="closepopup()">OK</button>
+      </div>
     </div>
   </div>
   <div id="box5">
@@ -89,6 +95,7 @@
   </div>
   <script src="main.js">
     generate_table()
+
   </script>
 </body>
 

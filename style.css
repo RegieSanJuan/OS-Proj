@@ -395,6 +395,7 @@ th {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
+  visibility: hidden;
 }
 
 #box5_5 {
@@ -406,6 +407,7 @@ th {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
+  visibility: hidden;
 }
 
 #box5_6 {
@@ -417,6 +419,7 @@ th {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
+  visibility: hidden;
 }
 
 #box5_7 {
@@ -428,6 +431,7 @@ th {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
+  visibility: hidden;
 }
 
 #box5_8 {
@@ -439,6 +443,7 @@ th {
   animation-name: box_slideUp;
   animation-duration: 1.5s;
   display: none;
+  visibility: hidden;
 }
 
 #box6 {
@@ -623,6 +628,53 @@ th {
 html {
   scroll-behavior: smooth;
 }
+#popup{
+  width: 200px;
+  background: #ebdbb2;
+  border-radius: 7px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%,-50%)scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  height: 210px;
+  color: #282828;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+.popup img{
+  width: 75px;
+  margin-top: -35px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.popup h2{
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+.popup button{
+  width: 75px;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: 0px;
+  background-color: #282828;
+  color: #ebdbb2;
+  cursor: pointer;
+  font-size: 20px;
+}
+.open-popup{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%,-50%)scale(1);
+}
+.close-popup{
+  visibility: hidden;
+  top: 0%;
+  transform: translate(-50%,-50%)scale(0.1);
+}
+
 
 /*ANIMATIONS*/
 @keyframes slideUp {
