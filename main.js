@@ -135,6 +135,10 @@ function proceed() {
 function condition() {
   let bool = JSON.parse(sessionStorage.getItem("condition"));
   if (bool === true) {
+    let div = document.getElementById("box4");
+    let button = document.getElementById("compute");
+    div.removeChild(button);
+    div.style.height = "60px";
     calculatePriorityValues();
   } else {
     proceed();
@@ -212,6 +216,8 @@ function gantt_chart() {
   let burst = gantt[0].Arrival;
   let width = 50;
   let margin_width = 50;
+  chart.innerHTML = "";
+  timestamp_div.innerHTML = "";
   console.log(number);
   chart.id = "gantt_chart";
 
