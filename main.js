@@ -163,8 +163,7 @@ function calculatePriorityValues() {
 
 function compute_data() {
   var comp = 0,
-    ms = 0,
-    idle_index = 1;
+    ms = 0;
   var n = processes.length;
 
   while (comp < n) {
@@ -183,21 +182,6 @@ function compute_data() {
       processes[index].Round++;
       comp++;
     } else {
-      /*let idle = {}, 
-        start = processes[comp].end,
-        end =  processes[comp].End;
-      idle["Process"] = 0;
-      idle["Arrival"] = processes[comp].End;
-      idle["Burst"] = end - start;
-      idle_index++;
-      ms++;
-      let idle_end = idle["Burst"] + ms;
-      console.log(processes[comp].End);
-      console.log(processes[comp].Arrival);
-      idle["Round"] = 1;
-      idle["Start"] = ms;
-      idle["End"] = idle["Burst"];
-      gantt.push(idle);*/
       gantt.push({ Process: 0 });
       ms++;
     }
@@ -213,7 +197,7 @@ function gantt_chart() {
   var chart = document.createElement("table");
   var chart_row = document.createElement("tr");
   var timestamp_div = document.getElementById("time_stamp");
-  let burst = gantt[0].Arrival;
+  let burst = 0;
   let width = 50;
   let margin_width = 50;
   chart.innerHTML = "";
@@ -246,13 +230,17 @@ function gantt_chart() {
 
     if (i < number) {
       var cell_width = document.getElementById("gantt_cell" + i.toString());
+      var idle = gantt[i].Process;
+      if (idle === 0) {
+        burst++;
+      }
       for (j = 0; j < gantt[i].Burst; j++) {
         margin.id = "margin" + i.toString();
         width += 2;
         if (gantt[i].End < 10) {
-          margin_width += 1.5;
+          margin_width += 0.5;
         } else {
-          margin_width += 1;
+          margin_width += 0.5;
         }
         burst++;
       }
@@ -284,9 +272,21 @@ function tat_wt() {
   var waiting_time = 0;
   var average_wt = 0;
 
-  var length = gantt.length;
   var total_waitingtime = 0;
   var total_turnaroundtime = 0;
+  var idle;
+
+  let splice = 0;
+  gantt.sort((a, b) => a.Process - b.Process);
+  for(i=0; i < gantt.length; i++) {
+    idle = gantt[i].Process.toString();
+    if (idle == "0") {
+      splice++;
+    }
+  }
+  gantt.splice(0, splice);
+
+  var length = gantt.length;
 
   if (length == 5) {
     document.getElementById("box5").id = "box5_5";
@@ -308,8 +308,7 @@ function tat_wt() {
     document.getElementById("box7").id = "box7_8";
     document.getElementById("box7").id = "box7_8";
   }
-
-  gantt.sort((a, b) => a.Process - b.Process);
+  
   for (var i = 0; i < gantt.length; i++) {
     num++;
     var p_tat = document.createElement("p");
