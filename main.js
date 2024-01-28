@@ -93,7 +93,7 @@ function generate_table() {
 
 //PROCESS.HTML
 function back() {
-  window.open("main.html", "_self");
+  window.open("index.html", "_self");
 }
 
 function proceed() {
