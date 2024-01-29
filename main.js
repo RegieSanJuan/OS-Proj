@@ -33,16 +33,16 @@ function generate_table() {
   var Table = document.getElementById("tables");
   var count = process_count;
   if (count == 5) {
-    document.getElementById("box3").id = "box3_5";
+    document.getElementById("box3").style.height = "300px";
   }
   if (count == 6) {
-    document.getElementById("box3").id = "box3_6";
+    document.getElementById("box3").style.height = "330px";
   }
   if (count == 7) {
-    document.getElementById("box3").id = "box3_7";
+    document.getElementById("box3").style.height = "360px";
   }
   if (count == 8) {
-    document.getElementById("box3").id = "box3_8";
+    document.getElementById("box3").style.height = "390px";
   }
   for (var i = 1; i <= count; i++) {
     var tr = document.createElement("tr");
@@ -135,10 +135,6 @@ function proceed() {
 function condition() {
   let bool = JSON.parse(sessionStorage.getItem("condition"));
   if (bool === true) {
-    let div = document.getElementById("box4");
-    let button = document.getElementById("compute");
-    //div.removeChild(button);
-    //div.style.height = "60px";
     calculatePriorityValues();
   } else {
     proceed();
@@ -260,7 +256,7 @@ function tat_wt() {
   document.getElementById("process_tat").innerHTML = " ";
   document.getElementById("total_TAT").innerHTML = " ";
   document.getElementById("ave_TAT").innerHTML = " ";
-  
+
   document.getElementById("process_wt").innerHTML = " ";
   document.getElementById("total_WT").innerHTML = " ";
   document.getElementById("ave_WT").innerHTML = " ";
