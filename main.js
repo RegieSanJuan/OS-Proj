@@ -137,8 +137,8 @@ function condition() {
   if (bool === true) {
     let div = document.getElementById("box4");
     let button = document.getElementById("compute");
-    div.removeChild(button);
-    div.style.height = "60px";
+    //div.removeChild(button);
+    //div.style.height = "60px";
     calculatePriorityValues();
   } else {
     proceed();
@@ -200,7 +200,7 @@ function gantt_chart() {
   let burst = 0;
   let width = 50;
   let margin_width = 50;
-  chart.innerHTML = "";
+  div.innerHTML = "";
   timestamp_div.innerHTML = "";
   console.log(number);
   chart.id = "gantt_chart";
@@ -238,7 +238,7 @@ function gantt_chart() {
         margin.id = "margin" + i.toString();
         width += 2;
         if (gantt[i].End < 10) {
-          margin_width += 0.5;
+          margin_width += 1;
         } else {
           margin_width += 0.5;
         }
@@ -257,6 +257,14 @@ function gantt_chart() {
 
 function tat_wt() {
   document.getElementById("box5").style.visibility = "visible";
+  document.getElementById("process_tat").innerHTML = " ";
+  document.getElementById("total_TAT").innerHTML = " ";
+  document.getElementById("ave_TAT").innerHTML = " ";
+  
+  document.getElementById("process_wt").innerHTML = " ";
+  document.getElementById("total_WT").innerHTML = " ";
+  document.getElementById("ave_WT").innerHTML = " ";
+
   var gantt = JSON.parse(sessionStorage.getItem("output"));
   var total_tat = document.getElementById("total_TAT");
   var ave_tat = document.getElementById("ave_TAT");
@@ -278,7 +286,7 @@ function tat_wt() {
 
   let splice = 0;
   gantt.sort((a, b) => a.Process - b.Process);
-  for(i=0; i < gantt.length; i++) {
+  for (i = 0; i < gantt.length; i++) {
     idle = gantt[i].Process.toString();
     if (idle == "0") {
       splice++;
@@ -289,26 +297,22 @@ function tat_wt() {
   var length = gantt.length;
 
   if (length == 5) {
-    document.getElementById("box5").id = "box5_5";
-    document.getElementById("box7").id = "box7_5";
-    document.getElementById("box7").id = "box7_5";
+    document.getElementById("box7_1").style.height = "270px";
+    document.getElementById("box7_2").style.height = "270px";
   }
   if (length == 6) {
-    document.getElementById("box5").id = "box5_6";
-    document.getElementById("box7").id = "box7_6";
-    document.getElementById("box7").id = "box7_6";
+    document.getElementById("box7_1").style.height = "320px";
+    document.getElementById("box7_2").style.height = "320px";
   }
   if (length == 7) {
-    document.getElementById("box5").id = "box5_7";
-    document.getElementById("box7").id = "box7_7";
-    document.getElementById("box7").id = "box7_7";
+    document.getElementById("box7_1").style.height = "340px";
+    document.getElementById("box7_2").style.height = "340px";
   }
   if (length == 8) {
-    document.getElementById("box5").id = "box5_8";
-    document.getElementById("box7").id = "box7_8";
-    document.getElementById("box7").id = "box7_8";
+    document.getElementById("box7_1").style.height = "370px";
+    document.getElementById("box7_2").style.height = "370px";
   }
-  
+
   for (var i = 0; i < gantt.length; i++) {
     num++;
     var p_tat = document.createElement("p");
