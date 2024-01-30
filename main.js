@@ -125,6 +125,7 @@ function proceed() {
       popup.style.visibility = "visible";
       popup.style.top = "50%";
       popup.style.transform = "translate(-50%,-50%)scale(1)";
+      break;
     }
   }
   window.sessionStorage.setItem("table_data", JSON.stringify(table_data));
@@ -207,7 +208,11 @@ function gantt_chart() {
       process_num.toString();
       var gantt_cell = document.createElement("th");
       gantt_cell.id = "gantt_cell" + i.toString();
-      gantt_cell.innerHTML = "P" + process_num.toString();
+      if (process_num === 0) {
+        gantt_cell.innerHTML = "-";
+      } else {
+        gantt_cell.innerHTML = "P" + process_num.toString();
+      }
       chart_row.appendChild(gantt_cell);
     }
     chart.appendChild(chart_row);
