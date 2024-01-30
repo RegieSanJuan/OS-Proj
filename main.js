@@ -241,7 +241,7 @@ function gantt_chart() {
         if (gantt[i].End < 10) {
           margin_width += 1;
         } else {
-          margin_width += 0.5;
+          margin_width += 0.75;
         }
         burst++;
       }
