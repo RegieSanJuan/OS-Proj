@@ -28,6 +28,7 @@ function table() {
   window.open("process.html", "_self");
 }
 
+//TABLE INPUT
 function generate_table() {
   process_count = sessionStorage.getItem("processes");
   var Table = document.getElementById("tables");
@@ -91,11 +92,11 @@ function generate_table() {
   }
 }
 
-//PROCESS.HTML
 function back() {
   window.open("index.html", "_self");
 }
 
+//PROCEEDING FOR COMPUTATION
 function proceed() {
   document.getElementById("box5").style.display = "block";
   var count = sessionStorage.getItem("processes");
@@ -133,14 +134,18 @@ function proceed() {
   condition();
 }
 
+//VALIDATION
 function condition() {
   let bool = JSON.parse(sessionStorage.getItem("condition"));
   if (bool === true) {
     calculatePriorityValues();
   } else {
+    document.getElementById("box5").style.visibility = "hidden";
     proceed();
   }
 }
+
+//SORTING
 function calculatePriorityValues() {
   processes = JSON.parse(sessionStorage.getItem("table_data"));
   var n = processes.length;
@@ -158,6 +163,7 @@ function calculatePriorityValues() {
   compute_data();
 }
 
+//PROCESS EXECUTION
 function compute_data() {
   var comp = 0,
     ms = 0;
@@ -188,6 +194,7 @@ function compute_data() {
   gantt_chart();
 }
 
+//GANTT_CHART
 function gantt_chart() {
   var div = document.getElementById("output");
   var number = gantt.length;
@@ -261,6 +268,7 @@ function gantt_chart() {
   tat_wt();
 }
 
+//TIME COMPUTATION
 function tat_wt() {
   document.getElementById("box5").style.visibility = "visible";
   document.getElementById("process_tat").innerHTML = " ";
