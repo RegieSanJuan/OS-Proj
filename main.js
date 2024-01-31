@@ -237,9 +237,14 @@ function gantt_chart() {
       }
       for (j = 0; j < gantt[i].Burst; j++) {
         margin.id = "margin" + i.toString();
-        width += 2;
+        width += 1.9;
+        if (idle === 0) {
+          margin_width = 45;
+        }
         if (gantt[i].End < 10) {
-          margin_width += 1;
+          margin_width += 0.75;
+        } else if (gantt[i].End > 35) {
+          margin_width += 0.25;
         } else {
           margin_width += 0.75;
         }
@@ -250,7 +255,7 @@ function gantt_chart() {
       margin.style.width = margin_width + "px";
       timestamp_div.appendChild(margin);
     }
-    margin_width = 50;
+    margin_width = 49.25;
     width = 50;
   }
   tat_wt();
