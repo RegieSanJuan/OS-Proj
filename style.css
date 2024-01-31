@@ -182,7 +182,7 @@ th {
   font-size: 22px;
   background-image: linear-gradient(
     to right,
-    #282828,
+    #ebdbb2,
     #ebdbb2 50%,
     #282828 50%
   );
@@ -198,7 +198,7 @@ th {
 
 #header:before {
   content: '';
-  background: #458588;
+  background: #ebdbb2;
   display: block;
   position: absolute;
   bottom: -3px;

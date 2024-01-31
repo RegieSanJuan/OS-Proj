@@ -109,7 +109,7 @@ function proceed() {
     var cell3 = document.getElementById("BT" + i.toString()).value;
     var cell4 = document.getElementById("PRIO" + i.toString()).value;
 
-    if (cell2 != " " && cell3 != " " && cell4 != " " && cell3 != 0) {
+    if (cell2 != " " && cell3 != " " && cell4 != " " && cell3 != 0 && cell2 >= 0 && cell3 > 0 && cell4 >=0) {
       row_data["Process"] = +cell1;
       row_data["Arrival"] = +cell2;
       row_data["Burst"] = +cell3;
